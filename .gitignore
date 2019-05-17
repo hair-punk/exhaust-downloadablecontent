@@ -1,4 +1,8 @@
 node_modules
+
 client/dist/bundle.js
 config.js
+
 knexfile.js
+database/migrations
+database/seeds
