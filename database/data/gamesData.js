@@ -1,4 +1,5 @@
 var faker = require('faker');
+var getImageURLs = require('./imagesAWS');
 
 var gameTypes = ['farm','fps','car', 'food', 'casino', 'puzzle', 'sports', 'board', 'alien', 'medieval'];
 var user_tags = {
@@ -20,6 +21,7 @@ var results = [];
 
 var getData = (num) => {
   var numGames = num;
+  var imageURLs = getImageURLs();
 
   for (var i = 0; i < numGames; i++) {
     var percent = Math.ceil(Math.random()* 100);
@@ -40,15 +42,15 @@ var getData = (num) => {
 
     for (var j = 0; j < numDLCs; j++) {
       var images = [];
-      var numImages = Math.floor(Math.random() * 4)
+      var gameType = game.game_type;
+      var randIMGnum = Math.floor(Math.random() * imageURLs[gameType].length)
 
       var dlc = {
         dlc_name: game.game_name + ' - ' + faker.lorem.words(3),
         price: faker.commerce.price(0,(game.original_price),2),
         release_date: faker.date.recent(600).toDateString().substr(4),
         user_reviews_num: faker.random.number(2000),
-        user_tags: user_tags[game.game_type],
-        images: 'working on this'
+        user_tags: user_tags[gameType],
       };
 
       if (dlc.user_reviews_num === 0) {
@@ -57,6 +59,17 @@ var getData = (num) => {
         dlc.user_reviews_overall = reviewsOverall[Math.floor(Math.random() * reviewsOverall.length)];
       };
       // TODO images
+      // Get a random subset of images of the proper game type
+      var bottomIndex = 0;
+      for (var k = 0; k <= randIMGnum; k++) {
+        var randIndex = Math.floor(Math.random() * imageURLs[gameType].length + bottomIndex);
+        var temp = imageURLs[gameType][randIndex];
+        imageURLs[gameType][randIndex] = imageURLs[gameType][bottomIndex];
+        imageURLs[gameType][bottomIndex] = temp;
+        images.push(imageURLs[gameType][bottomIndex]);
+        bottomIndex++;
+      }
+      dlc.images = images;
       dlcs.push(dlc);
     }
     game.dlcs = dlcs;
