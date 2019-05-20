@@ -48,6 +48,7 @@ var getData = (num) => {
         release_date: faker.date.recent(600).toDateString().substr(4),
         user_reviews_num: faker.random.number(2000),
         user_tags: user_tags[game.game_type],
+        images: 'working on this'
       };
 
       if (dlc.user_reviews_num === 0) {
@@ -64,7 +65,5 @@ var getData = (num) => {
 
   return results;
 }
-
-console.log(JSON.stringify(getData(3)));
 
 module.exports.getData = getData;

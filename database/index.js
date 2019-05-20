@@ -5,7 +5,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
 let dlcSchema = mongoose.Schema({
-  dlcID: { type: Number, unique: true },
   dlc_name: String,
   price: String,
   release_date: Date,
@@ -16,9 +15,8 @@ let dlcSchema = mongoose.Schema({
 });
 
 let gamesSchema = mongoose.Schema({
-  gamesID: { type: Number, unique: true },
   game_name: String,
-  game_type: Number,
+  game_type: String,
   original_price: String,
   sale_boolean: Boolean,
   sale_percentage: String,
@@ -28,3 +26,5 @@ let gamesSchema = mongoose.Schema({
 
 let DLC = mongoose.model('DLC', dlcSchema);
 let Games = mongoose.model('Games', gamesSchema);
+
+module.exports = Games;
