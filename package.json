@@ -1,17 +1,42 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
-  "author": "",
-  "license": "",
+  "name": "fec3-amkw-service",
+  "description": "Exhaust Purchase Options Module (Steam Game Page emulator)",
+  "author": "Alyssa Wei",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon ./server/index.js",
+    "react-dev": "webpack -d --watch",
+    "seed-db": "node ./database/data/seedDB.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.9",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-  }
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "aws-sdk": "^2.459.0",
+    "babel-loader": "^8.0.6",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "faker": "^4.1.0",
+    "nodemon": "^1.19.0",
+    "webpack": "^4.31.0",
+    "webpack-cli": "^3.3.2"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hair-punk/fec3-amkw-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hair-punk/fec3-amkw-service/issues"
+  },
+  "homepage": "https://github.com/hair-punk/fec3-amkw-service#readme"
 }

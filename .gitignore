@@ -1,0 +1,4 @@
+node_modules
+
+client/dist/bundle.js
+database/data/aws_config.js
