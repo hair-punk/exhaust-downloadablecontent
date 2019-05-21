@@ -3,4 +3,4 @@ node_modules
 client/dist/bundle.js
 client/src
 
-database/data/config.json
+database/data/awsconfig.json
