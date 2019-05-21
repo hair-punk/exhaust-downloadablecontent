@@ -1,41 +1,45 @@
 var AWS = require('aws-sdk');
-// var test = require('./')
 
-AWS.config.loadFromPath(__dirname+'/aws_config');
+AWS.config.loadFromPath(__dirname+'/config.json');
 
-var s3Bucket = new AWS.S3({ params: { Bucket: 'hrr38-fecteam3-purchaseoptionsimages' } });
+var s3 = new AWS.S3();
 
-
-// TODO imageName, imageFile
-// var data = { Key: imageName, Body: imageFile };
-// s3Bucket.putObject(data, function (err, data) {
-//   if (err) return console.error(err);
-// });
-
-var getImageURLs = function() {
+var getImageURLs = function(cb) {
 
   var urls = {};
 
   var params = { Bucket: 'hrr38-fecteam3-purchaseoptionsimages' };
   s3.listObjects(params, function (err, data) {
+    if (err) return console.error('err:', err);
     var bucketContents = data.Contents;
 
-    for (var i = 0; i < bucketContents.length; i++) {
-
-      var gameType = bucketContents[i].Key.split('-')[0];
-      if (urls[gameType] === undefined){
-        urls[gameType] = [];
-      }
-
-      var urlParams = { Bucket: 'hrr38-fecteam3-purchaseoptionsimages', Key: bucketContents[i].Key };
-      s3.getSignedUrl('getObject', urlParams, function (err, url) {
-        if (err) return console.error(err);
-        urls[gameType].push(url);
+    async function getSignedUrl(key) {
+      return new Promise((resolve, reject) => {
+        let params = { Bucket: 'hrr38-fecteam3-purchaseoptionsimages', Key: key };
+        s3.getSignedUrl('getObject', params, (err, url) => {
+          if (err) return console.error(err)
+          resolve(url);
+        })
       });
     }
-  });
 
-  return urls;
+    async function process(items) {
+      for (let item of items) {
+        const signedUrl = await getSignedUrl(item.Key);
+        var gameType = item.Key.split('-')[0];
+        if (urls[gameType] === undefined) {
+          urls[gameType] = [];
+        }
+        urls[gameType].push(signedUrl);
+      }
+      return urls;
+    }
+
+
+    process(bucketContents).then(res => {
+      cb(res);
+    });
+  });
 }
 
 module.exports = getImageURLs;

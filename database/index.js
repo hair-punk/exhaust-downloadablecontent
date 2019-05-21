@@ -27,4 +27,4 @@ let gamesSchema = mongoose.Schema({
 let DLC = mongoose.model('DLC', dlcSchema);
 let Games = mongoose.model('Games', gamesSchema);
 
-module.exports = Games;
+module.exports = { Games, db: mongoose.connection };
