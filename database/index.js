@@ -15,12 +15,16 @@ let dlcSchema = mongoose.Schema({
 });
 
 let gamesSchema = mongoose.Schema({
+  game_id: { type: Number, unique: true },
   game_name: String,
   game_type: String,
   original_price: String,
   sale_boolean: Boolean,
   sale_percentage: String,
-  dlcs: [dlcSchema]
+  dlcs: [dlcSchema],
+  franchise: Boolean,
+  sale_countdown_boolean: Boolean,
+  os: [String]
 });
 
 
