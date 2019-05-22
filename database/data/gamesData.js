@@ -32,6 +32,7 @@ var getData = (num, cb) => {
       var dlcs = [];
 
       var game = {
+        game_id: i,
         game_name: faker.commerce.productAdjective() + ' ' + faker.company.catchPhraseNoun(),
         game_type: gameTypes[Math.floor(Math.random() * gameTypes.length)],
         original_price: faker.commerce.price(0,200,2),
@@ -60,7 +61,6 @@ var getData = (num, cb) => {
         } else {
           dlc.user_reviews_overall = reviewsOverall[Math.floor(Math.random() * reviewsOverall.length)];
         };
-        // TODO images
         // Get a random subset of images of the proper game type
         var bottomIndex = 0;
         var images = [];

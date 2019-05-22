@@ -15,6 +15,7 @@ let dlcSchema = mongoose.Schema({
 });
 
 let gamesSchema = mongoose.Schema({
+  game_id: { type: Number, unique: true },
   game_name: String,
   game_type: String,
   original_price: String,
