@@ -37,7 +37,9 @@ var getData = (num, cb) => {
         game_type: gameTypes[Math.floor(Math.random() * gameTypes.length)],
         original_price: faker.commerce.price(0,200,2),
         sale_boolean: faker.random.boolean(),
+        sale_countdown_boolean: faker.random.boolean(),
         sale_percentage: percent.toString(),
+        franchise: faker.random.boolean(),
         os: OS.slice(0,randOSindex)
       };
 

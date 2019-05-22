@@ -21,7 +21,10 @@ let gamesSchema = mongoose.Schema({
   original_price: String,
   sale_boolean: Boolean,
   sale_percentage: String,
-  dlcs: [dlcSchema]
+  dlcs: [dlcSchema],
+  franchise: Boolean,
+  sale_countdown_boolean: Boolean,
+  os: [String]
 });
 
 
