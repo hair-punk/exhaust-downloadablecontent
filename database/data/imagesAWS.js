@@ -15,7 +15,7 @@ var getImageURLs = function(cb) {
 
     async function getSignedUrl(key) {
       return new Promise((resolve, reject) => {
-        let params = { Bucket: 'hrr38-fecteam3-purchaseoptionsimages', Key: key };
+        let params = { Bucket: 'hrr38-fecteam3-purchaseoptionsimages', Key: key, Expires: 604800 }; // max expiration allowed 7 days
         s3.getSignedUrl('getObject', params, (err, url) => {
           if (err) return console.error(err)
           resolve(url);
