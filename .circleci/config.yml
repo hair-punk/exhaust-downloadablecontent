@@ -1,15 +1,36 @@
-# Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
-version: 2.1
+version: 2.0
+jobs:
+  build:
+    working_directory: ~/tmp
+      docker:
+        - image: circleci/node:8.11.3
+        - image: mongo:4.0.9
+      steps:
+        - restore_cache:
+          keys: dependency-cache-{{ checksum "package.json" }}
 
-# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
+        - checkout
+        - npm install
+        - npm test
 
-# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
-workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
+        - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+
+
+# # Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
+# version: 2.1
+
+# # Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
+# orbs:
+#   # Declare a dependency on the welcome-orb
+#   welcome: circleci/welcome-orb@0.3.1
+
+# # Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
+# workflows:
+#   # Name the workflow "Welcome"
+#   Welcome:
+#     # Run the welcome/run job in its own container
+#     jobs:
+#       - welcome/run
