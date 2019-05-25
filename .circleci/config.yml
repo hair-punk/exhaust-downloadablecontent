@@ -1,15 +1,50 @@
-# Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
-version: 2.1
+version: 2.0
+jobs:
+  build:
+    working_directory: ~/tmp
+      docker:
+        - image: circleci/node:8.11.3
+        - image: mongo:4.0.9
+      # herodb => my test db name?
+      environment:
+        - MONGO_URL: "mongodb://localhost:27017/herodb"
+      steps:
+        - run: npm update
+        - checkout
 
-# Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.3.1
+        - restore_cache:
+          keys: dependency-cache-v1-{{ checksum "package-lock.json" }}
 
-# Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
-workflows:
-  # Name the workflow "Welcome"
-  Welcome:
-    # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
+        - npm ci
+
+        - save_cache:
+          key: dependency-cache-v1-{{ checksum "package-lock.json" }}
+          # maybe path should be ~/project/node_modules
+          paths:
+            - /home/circleci/.npm
+
+        # start server
+        - run:
+            command: npm start
+            background: true
+        - run: sleep 2s
+        - run: ps aux #see what is running
+
+        - run: npm test:mocha
+        - run: npm test:jest
+
+# # Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
+# version: 2.1
+
+# # Use a package of configuration called an orb, see https://circleci.com/docs/2.0/orb-intro/
+# orbs:
+#   # Declare a dependency on the welcome-orb
+#   welcome: circleci/welcome-orb@0.3.1
+
+# # Orchestrate or schedule a set of jobs, see https://circleci.com/docs/2.0/workflows/
+# workflows:
+#   # Name the workflow "Welcome"
+#   Welcome:
+#     # Run the welcome/run job in its own container
+#     jobs:
+#       - welcome/run

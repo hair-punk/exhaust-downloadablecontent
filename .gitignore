@@ -5,3 +5,8 @@ client/dist/bundle.js
 client/src
 
 database/data/awsconfig.json
+
+jest.config.js
+enzyme.config.js
+coverage
+jest-mongodb-config.js
