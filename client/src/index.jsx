@@ -20,19 +20,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h2>Still rendering React App!</h2>
+        <h2>Rendering my React App!</h2>
       </div>
     )
   }
 };
-  // let App = () => {
-//   return (
-//     <div>
-//       <h2>Rendering React App!</h2>
-//     </div>
-//   )
-// };
 
-ReactDOM.render(< App />, document.getElementById('app'));
+ReactDOM.render(< App />, document.getElementById('app') || document.createElement('div')); // createElement for testing purposes
 
 export default App;

@@ -13,11 +13,12 @@
     "test:jest": "jest",
     "test:jest-watch": "jest --watch ./*.test.js",
     "test:jest-coverage": "jest --coverage --colors",
-    "test:mocha": "mocha ./tests/dbMocha.js"
+    "test:mocha": "mocha ./database/dbMocha.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.0",
+    "jest-cli": "^24.8.0",
     "jquery": "^3.4.1",
     "mongoose": "^5.5.11",
     "react": "^16.8.6",

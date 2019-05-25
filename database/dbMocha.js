@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
-var Games = require('../database/index');
+var Games = require('./index');
 // var controller = require('');
 
 
