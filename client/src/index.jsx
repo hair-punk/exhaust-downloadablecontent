@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { getSalePrice, toSentenceCase } from './gameDataHelpers'
+import { getSalePrice, toPascalCase, getLogoURLs } from './gameDataHelpers';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,13 +16,13 @@ class App extends React.Component {
     $.get(`http://localhost:3003/games/${id}`, (data) => {
       this.setState({
         franchiseBool: data.franchise,
-        gameName: toSentenceCase(data.game_name),
+        gameName: toPascalCase(data.game_name),
         price: data.original_price,
         saleBool: data.sale_boolean, // Shows % off elements
         saleCountdownBool: data.sale_countdown_boolean, // If special sale
         salePercent: data.sale_percentage,
         salePrice: getSalePrice(data.original_price, data.sale_percentage),
-        os: data.os, // TODO map strings to icons
+        os: data.os, //getLogoURLs(data.os), // TODO map strings to icons
         dlcCount: data.dlcs.length,
         dlcData: data.dlcs
       });
