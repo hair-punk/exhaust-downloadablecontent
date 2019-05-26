@@ -73,3 +73,7 @@ const getLogoURLs = async (arr, cb) => {
 };
 
 module.exports = { getImageURLs, getLogoURLs};
+
+// https://hrr38-fecteam3-oslogos              .s3.us-west-1.amazonaws.com/windows-logo.png?   AWSAccessKeyId=AKIARIHXW3MLENSB27G7&Expires=1559514237&Signature=OEp94LBtS+amCLMjuF7oFEmItzQ=
+// https://hrr38-fecteam3-purchaseoptionsimages.s3.us-west-1.amazonaws.com/car-sand.jpg    ?   AWSAccessKeyId=AKIARIHXW3MLENSB27G7&Expires=1559514237&Signature=kZRkLW4ISOslXyLNYtlR9nPMnnw=
+// https://hrr38-fecteam3-purchaseoptionsimages.s3.us-west-1.amazonaws.com/car-blurredsign.jpg?AWSAccessKeyId=AKIARIHXW3MLENSB27G7&Expires=1559514237&Signature=eb1X6R6qXtV%2BYI5uQOoRwLMRETY%3D
