@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { getSalePrice, toPascalCase, getLogoURLs } from './gameDataHelpers';
+import { getSalePrice, toPascalCase } from './gameDataHelpers';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class App extends React.Component {
         saleCountdownBool: data.sale_countdown_boolean, // If special sale
         salePercent: data.sale_percentage,
         salePrice: getSalePrice(data.original_price, data.sale_percentage),
-        os: data.os, //getLogoURLs(data.os), // TODO map strings to icons
+        os: data.os,
         dlcCount: data.dlcs.length,
         dlcData: data.dlcs
       });
