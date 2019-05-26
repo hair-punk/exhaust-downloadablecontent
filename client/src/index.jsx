@@ -61,9 +61,28 @@ class App extends React.Component {
       textShadow: '1px 1px rgba(0, 0, 0, 0.5)',
     };
 
+    const gamePurchaseBannerStyle = {
+      display: 'block',
+      background: 'linear-gradient(135deg, rgba(97, 100, 101, 0.3) 0%, rgba(226, 244, 255, 0.3) 100%)',
+      padding: '16px 16px 26px 16px',
+      marginTop: '16px'
+    };
+
+    const gamePurchaseTextStyle = {
+      color: '#ffffff',
+      fontSize: '21px',
+      fontFamily: '"Motiva Sans", Sans-serif',
+      marginBlockStart: '0.67em',
+      marginBlockEnd: '0.67em',
+      marginInlineStart: '0px',
+      marginInlineEnd: '0px',
+      fontWeight: '100'
+    };
+
+    const gamePurchaseOSStyle = {};
+
     return (
       <div>
-        <h2>Rendering my React App!</h2>
         {/* Franchise Banner - rendered if this.state bool is true*/}
         { this.state.franchiseBool &&
         <div style={franchiseBannerStyle}>
@@ -72,9 +91,12 @@ class App extends React.Component {
           </div>
         </div>
         }
-        <div style={tempDataStyle}>{data}</div>
         {/* Game Purchase Options */}
+        <div style={gamePurchaseBannerStyle}>
+          <h1 style={gamePurchaseTextStyle}>Buy {this.state.gameName}</h1>
+        </div>
         {/* DLC Options */}
+        <div style={tempDataStyle}>{data}</div>
       </div>
     )
   }
