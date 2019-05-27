@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { getSalePrice, toPascalCase } from './gameDataHelpers';
+import GameAddOns from './components/GameAddOns.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -78,7 +79,7 @@ class App extends React.Component {
       marginBlockEnd: '0.67em',
       marginInlineStart: '0px',
       marginInlineEnd: '0px',
-      fontWeight: '100'
+      fontWeight: '300'
     };
 
     const gamePurchaseOSStyle = {
@@ -118,6 +119,10 @@ class App extends React.Component {
           </div>
         </div>
         {/* DLC Options */}
+        { (this.state.dlcCount >= 1) &&
+        < GameAddOns dlcs={this.state.dlcData}/>
+        }
+        {/* Data */}
         <div style={tempDataStyle}>{data}</div>
       </div>
     )
