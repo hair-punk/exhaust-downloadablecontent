@@ -14,6 +14,8 @@ class App extends React.Component {
 
   componentDidMount() {
     var id = Math.floor(Math.random() * 100);
+    id = 2;
+    // TODO using id=2 for now
     $.get(`http://localhost:3003/games/${id}`, (data) => {
       this.setState({
         franchiseBool: data.franchise,
@@ -42,6 +44,20 @@ class App extends React.Component {
       display: 'flex',
       flexDirection: 'column'
     }
+
+    const gridContainer = {
+      display: 'grid',
+      gridTemplateColumns: '65% auto'
+    };
+
+    const col1 = {
+      gridColumnStart: '1',
+      gridColumnEnd: '2',
+    };
+
+    const col2 = {
+      gridColumnStart: '2'
+    };
 
     const franchiseBannerStyle = {
       display: 'block',
@@ -98,32 +114,76 @@ class App extends React.Component {
         console.log('image', image)
         osLogos.push(<img src={image} alt='OS logo' style={eachLogoStyle}></img>);
       }
-      console.log(osLogos);
     }
 
+    const footerStyle = {
+      display: 'flex',
+      justifyContent: 'flex-end',
+      height: '40px'
+    };
+
+    const costCartDivStyle = {
+      background: '#000000',
+      borderRadius: '2px',
+      height: '100%',
+      display: 'inline-flex',
+      lineHeight: '14px',
+      margin: '10px'
+    };
+
+    const costStyle = {
+      background: 'transparent',
+      color: '#dbe2e6',
+      fontSize: '13px',
+      fontFamily: '"Motiva Sans", Sans-serif',
+      fontWeight: '100',
+      height: '100%',
+      margin: '15px'
+    };
+
+    const cartButtonStyle = {
+      background: 'linear-gradient( to bottom, rgba(121,153,5,1) 5%, rgba(83,105,4,1) 95%)',
+      height: '85%',
+      borderColor: 'transparent',
+      color: '#c6d4df',
+      fontSize: '15px',
+      fontFamily: '"Motiva Sans", Sans-serif',
+      margin: '3px'
+    };
+
     return (
-      <div>
-        {/* Franchise Banner - rendered if this.state bool is true*/}
-        { this.state.franchiseBool &&
-        <div style={franchiseBannerStyle}>
-          <div style={franchiseTextStyle}>
-            Check out the entire {this.state.gameName} Franchise on Steam
+      <div style={gridContainer}>
+        <div style={col1}>
+          {/* Franchise Banner - rendered if this.state bool is true*/}
+          { this.state.franchiseBool &&
+          <div style={franchiseBannerStyle}>
+            <div style={franchiseTextStyle}>
+              Check out the entire {this.state.gameName} Franchise on Steam
+            </div>
           </div>
-        </div>
-        }
-        {/* Game Purchase Options */}
-        <div style={gamePurchaseBannerStyle}>
-          <h1 style={gamePurchaseTextStyle}>Buy {this.state.gameName}</h1>
-          <div style={gamePurchaseOSStyle}>
-            {osLogos}
+          }
+          {/* Game Purchase Options */}
+          <div style={gamePurchaseBannerStyle}>
+            <h1 style={gamePurchaseTextStyle}>Buy {this.state.gameName}</h1>
+            <div style={gamePurchaseOSStyle}>
+              {osLogos}
+            </div>
           </div>
+          {/* Price and Add to cart buttons */}
+          <div style={footerStyle}>
+            <div style={costCartDivStyle}>
+              <h2 style={costStyle}>{'$'+ this.state.price}</h2>
+              <button style={cartButtonStyle}>Add to Cart</button>
+            </div>
+          </div>
+          {/* DLC Options */}
+          { (this.state.dlcCount >= 1) &&
+          < GameAddOns dlcs={this.state.dlcData}/>
+          }
+          {/* Data */}
+          <div style={tempDataStyle}>{data}</div>
         </div>
-        {/* DLC Options */}
-        { (this.state.dlcCount >= 1) &&
-        < GameAddOns dlcs={this.state.dlcData}/>
-        }
-        {/* Data */}
-        <div style={tempDataStyle}>{data}</div>
+        <div style={col2}></div>
       </div>
     )
   }
@@ -132,3 +192,11 @@ class App extends React.Component {
 ReactDOM.render(< App />, document.getElementById('app') || document.createElement('div')); // createElement for testing purposes
 
 export default App;
+
+// TODO breakout franchise module
+// TODO franchise module react on hover
+
+// TODO breakout main game module
+// TODO cart button react on hover
+// TODO countdown if bool = true
+// TODO sale module if bool = true
