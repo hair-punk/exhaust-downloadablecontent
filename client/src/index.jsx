@@ -22,7 +22,7 @@ class App extends React.Component {
         saleCountdownBool: data.sale_countdown_boolean, // If special sale
         salePercent: data.sale_percentage,
         salePrice: getSalePrice(data.original_price, data.sale_percentage),
-        os: data.os,
+        os: data.os, // TODO find better mac logo
         dlcCount: data.dlcs.length,
         dlcData: data.dlcs
       });
@@ -62,7 +62,9 @@ class App extends React.Component {
     };
 
     const gamePurchaseBannerStyle = {
-      display: 'block',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       background: 'linear-gradient(135deg, rgba(97, 100, 101, 0.3) 0%, rgba(226, 244, 255, 0.3) 100%)',
       padding: '16px 16px 26px 16px',
       marginTop: '16px'
@@ -79,7 +81,24 @@ class App extends React.Component {
       fontWeight: '100'
     };
 
-    const gamePurchaseOSStyle = {};
+    const gamePurchaseOSStyle = {
+      height: '18px',
+      display: 'flex'
+    };
+
+    const eachLogoStyle = {
+      height: '100%',
+      width: 'auto'
+    };
+
+    let osLogos = [];
+    if (this.state.os !== undefined) {
+      for (let image of this.state.os) {
+        console.log('image', image)
+        osLogos.push(<img src={image} alt='OS logo' style={eachLogoStyle}></img>);
+      }
+      console.log(osLogos);
+    }
 
     return (
       <div>
@@ -94,6 +113,9 @@ class App extends React.Component {
         {/* Game Purchase Options */}
         <div style={gamePurchaseBannerStyle}>
           <h1 style={gamePurchaseTextStyle}>Buy {this.state.gameName}</h1>
+          <div style={gamePurchaseOSStyle}>
+            {osLogos}
+          </div>
         </div>
         {/* DLC Options */}
         <div style={tempDataStyle}>{data}</div>
