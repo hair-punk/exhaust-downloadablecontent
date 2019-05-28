@@ -84,7 +84,7 @@ class App extends React.Component {
       alignItems: 'center',
       background: 'linear-gradient(135deg, rgba(97, 100, 101, 0.3) 0%, rgba(226, 244, 255, 0.3) 100%)',
       padding: '16px 16px 26px 16px',
-      marginTop: '16px'
+      marginTop: '16px',
     };
 
     const gamePurchaseTextStyle = {
@@ -111,7 +111,6 @@ class App extends React.Component {
     let osLogos = [];
     if (this.state.os !== undefined) {
       for (let image of this.state.os) {
-        console.log('image', image)
         osLogos.push(<img src={image} alt='OS logo' style={eachLogoStyle}></img>);
       }
     }
@@ -119,7 +118,8 @@ class App extends React.Component {
     const footerStyle = {
       display: 'flex',
       justifyContent: 'flex-end',
-      height: '40px'
+      height: '40px',
+      // position: 'relative'
     };
 
     const costCartDivStyle = {
@@ -128,7 +128,11 @@ class App extends React.Component {
       height: '100%',
       display: 'inline-flex',
       lineHeight: '14px',
-      margin: '10px'
+      margin: '10px',
+      position: 'relative',
+      top: '-23px',
+      left: '-4px',
+      zIndex: '5'
     };
 
     const costStyle = {
@@ -137,18 +141,18 @@ class App extends React.Component {
       fontSize: '13px',
       fontFamily: '"Motiva Sans", Sans-serif',
       fontWeight: '100',
-      height: '100%',
+      height: '85%',
       margin: '15px'
     };
 
     const cartButtonStyle = {
       background: 'linear-gradient( to bottom, rgba(121,153,5,1) 5%, rgba(83,105,4,1) 95%)',
-      height: '85%',
       borderColor: 'transparent',
       color: '#c6d4df',
       fontSize: '15px',
       fontFamily: '"Motiva Sans", Sans-serif',
-      margin: '3px'
+      margin: '3px',
+      padding: '0 15px'
     };
 
     return (
