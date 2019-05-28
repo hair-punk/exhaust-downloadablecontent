@@ -2,7 +2,6 @@ node_modules
 DS_Store
 
 client/dist/bundle.js
-client/src
 
 database/data/awsconfig.json
 
