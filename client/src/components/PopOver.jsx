@@ -42,7 +42,7 @@ class PopOver extends React.Component {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
-      height: '350px',
+      height: '360px',
       width: '300px',
       padding: '15px',
       background: 'linear-gradient(to bottom, rgba(227,234,239,1) 0%,rgba(199,213,224,1) 100%)'
@@ -109,8 +109,6 @@ class PopOver extends React.Component {
       margin: '2px 5px'
     };
 
-    const tagsDivStyle = {};
-
     const tagsHeaderStyle = {
       fontSize: '14px',
       fontFamily: '"Motiva Sans", Sans-serif',
@@ -119,8 +117,25 @@ class PopOver extends React.Component {
       margin: '2px 2px'
     };
 
-    const userTagsStyle = {
+    const tagsDivStyle = {
+      display: 'flex'
     };
+
+    const userTagsStyle = {
+      color: '#ffffff',
+      fontSize: '12px',
+      fontFamily: '"Motiva Sans", Sans-serif',
+      fontWeight: '100',
+      background: '#556772',
+      padding: '2px 5px',
+      margin: '2px 2px',
+      borderRadius: '2px'
+    };
+
+    let tags = [];
+    for (let item of this.props.content.user_tags) {
+      tags.push(<h2 style={userTagsStyle}>{item}</h2>);
+    }
 
     return (
       <div style={modalStyle}>
@@ -134,9 +149,11 @@ class PopOver extends React.Component {
             <h4 style={numReviewsStyle}>({this.props.content.user_reviews_num} reviews)</h4>
           </div>
         </div>
-        <div style={tagsDivStyle}>
+        <div>
           <h3 style={tagsHeaderStyle}>User tags:</h3>
-          <div style={userTagsStyle}>{this.props.content.user_tags}</div>
+          <div style={tagsDivStyle}>
+            {tags}
+          </div>
         </div>
       </div>
     );
@@ -146,4 +163,3 @@ class PopOver extends React.Component {
 export default PopOver;
 
 // TODO overall review color
-// TODO user tags rendered boxes
