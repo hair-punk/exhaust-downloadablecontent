@@ -55,9 +55,10 @@ class PopOver extends React.Component {
       color: '#222d3d',
       margin: '2px'
     };
+    const DLCname = toPascalCase(this.props.content.dlc_name);
 
     const releaseDateStyle = {
-      fontSize: '10px',
+      fontSize: '11px',
       fontFamily: '"Motiva Sans", Sans-serif',
       fontWeight: '200',
       color: '#30455a',
@@ -147,7 +148,7 @@ class PopOver extends React.Component {
 
     return (
       <div style={modalStyle}>
-        <h2 style={nameStyle}>{this.props.content.dlc_name}</h2>
+        <h2 style={nameStyle}>{DLCname}</h2>
         <h2 style={releaseDateStyle}>Released: {releaseDate}</h2>
         <img src={this.state.images[this.state.imageIndex]} alt='DLC image' style={imageStyle}></img>
         <div style={reviewsDivStyle}>

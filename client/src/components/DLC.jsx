@@ -33,19 +33,29 @@ class DLC extends React.Component {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      background: 'linear-gradient(135deg, rgba(97, 100, 101, 0.3) 0%, rgba(226, 244, 255, 0.3) 100%)',
+      // background: 'linear-gradient(135deg, rgba(97, 100, 101, 0.3) 0%, rgba(226, 244, 255, 0.3) 100%)',
       height: '26px',
       margin: '2px',
       minWidth: '100%'
     };
+    if (this.state.isHover) {
+      rowStyle.background = '#67c1f5';
+    } else {
+      rowStyle.background = 'linear-gradient(135deg, rgba(97, 100, 101, 0.3) 0%, rgba(226, 244, 255, 0.3) 100%)';
+    }
 
     const nameStyle = {
-      color: '#c6d4df',
+      // color: '#c6d4df',
       fontSize: '12px',
       fontFamily: '"Motiva Sans", Sans-serif',
       fontWeight: '100',
       margin: '0 10px'
     };
+    if (this.state.isHover) {
+      nameStyle.color = '#ffffff';
+    } else {
+      nameStyle.color = '#c6d4df';
+    }
 
     const priceStyle = {
       color: '#ffffff',
@@ -55,7 +65,7 @@ class DLC extends React.Component {
       margin: '0 10px'
     };
 
-    const tempStyle = {
+    const overlayStyle = {
       position: 'relative',
       // top: '-26px',
       zIndex: '100',
@@ -77,7 +87,7 @@ class DLC extends React.Component {
           <h3 style={nameStyle}>{dlcName}</h3>
           <h3 style={priceStyle}>{price}</h3>
         </div>
-        <div style={tempStyle}>
+        <div style={overlayStyle}>
           {this.state.isHover &&
             <div style={biggerStyle}>
               < PopOver content={this.props.content} hover={this.state.isHover}/>
@@ -92,4 +102,3 @@ class DLC extends React.Component {
 export default DLC;
 
 // TODO row react on hover
-// TODO module pop up module on hover
