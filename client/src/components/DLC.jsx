@@ -1,4 +1,5 @@
 import React from 'react';
+import PopOver from './PopOver.jsx';
 import { toPascalCase, getDLCCost } from '../gameDataHelpers';
 
 class DLC extends React.Component {
@@ -79,7 +80,7 @@ class DLC extends React.Component {
         <div style={tempStyle}>
           {this.state.isHover &&
             <div style={biggerStyle}>
-              <h1>Show on hover</h1>
+              < PopOver content={this.props.content} hover={this.state.isHover}/>
             </div>
           }
         </div>
