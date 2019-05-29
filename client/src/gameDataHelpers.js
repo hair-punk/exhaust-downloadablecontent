@@ -39,4 +39,11 @@ const getDLCCost = (str) => {
   }
 };
 
-module.exports = { getSalePrice, toPascalCase, getTotalCost, getDLCCost };
+const formatDate = (isodate) => {
+  const readableDate = isodate.substring(0,10).split('-');
+  const monthNum = parseInt(readableDate[1]);
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
+  return `${months[monthNum-1]} ${parseInt(readableDate[2])}, ${readableDate[0]}`;
+};
+
+module.exports = { getSalePrice, toPascalCase, getTotalCost, getDLCCost, formatDate };

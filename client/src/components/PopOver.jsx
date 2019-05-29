@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatDate } from '../gameDataHelpers';
 
 class PopOver extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class PopOver extends React.Component {
   }
 
   render() {
-    const releaseDate = 'Mar 26, 2019';//formatDate(this.props.content.releaseDate); // TODO formatDate helper
+    const releaseDate = formatDate(this.props.content.release_date);
 
     const modalStyle = {
       display: 'flex',
@@ -144,6 +145,5 @@ class PopOver extends React.Component {
 
 export default PopOver;
 
-// TODO release date logic
 // TODO overall review color
 // TODO user tags rendered boxes
