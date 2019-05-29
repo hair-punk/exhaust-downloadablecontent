@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDate } from '../gameDataHelpers';
+import { formatDate, toPascalCase } from '../gameDataHelpers';
 
 class PopOver extends React.Component {
   constructor(props) {
@@ -97,9 +97,17 @@ class PopOver extends React.Component {
     const reviewsRatingStyle = {
       fontSize: '14px',
       fontFamily: '"Motiva Sans", Sans-serif',
-      fontWeight: '200',
+      fontWeight: '500',
       margin: '4px 0'
     };
+
+    const reviewTrend = toPascalCase(this.props.content.user_reviews_overall);
+
+    if (reviewTrend === 'Very Positive' || reviewTrend === 'Mostly Postive' || reviewTrend === 'Positive') {
+      reviewsRatingStyle.color = '#67c1f5';
+    } else {
+      reviewsRatingStyle.color = '#B9A074';
+    }
 
     const numReviewsStyle = {
       fontSize: '14px',
@@ -145,7 +153,7 @@ class PopOver extends React.Component {
         <div style={reviewsDivStyle}>
           <h3 style={reviewsHeaderStyle}>Overall user reviews</h3>
           <div style={reviewsDataDivStyle}>
-            <h4 style={reviewsRatingStyle}>{this.props.content.user_reviews_overall}</h4>
+            <h4 style={reviewsRatingStyle}>{reviewTrend}</h4>
             <h4 style={numReviewsStyle}>({this.props.content.user_reviews_num} reviews)</h4>
           </div>
         </div>
@@ -161,5 +169,3 @@ class PopOver extends React.Component {
 }
 
 export default PopOver;
-
-// TODO overall review color
