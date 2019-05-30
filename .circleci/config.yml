@@ -5,9 +5,9 @@ jobs:
       docker:
         - image: circleci/node:8.11.3
         - image: mongo:4.0.9
-      # herodb => my test db name?
+
       environment:
-        - MONGO_URL: "mongodb://localhost:27017/herodb"
+        - MONGO_URL: "mongodb://localhost:27017/test"
       steps:
         - run: npm update
         - checkout
@@ -30,8 +30,9 @@ jobs:
         - run: sleep 2s
         - run: ps aux #see what is running
 
-        - run: npm test:mocha
-        - run: npm test:jest
+        - run: npm run seed-db
+        - run: npm run test:mocha
+        - run: npm run test:jest
 
 # # Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 # version: 2.1
