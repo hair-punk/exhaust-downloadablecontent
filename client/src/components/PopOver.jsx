@@ -104,7 +104,7 @@ class PopOver extends React.Component {
 
     const reviewTrend = toPascalCase(this.props.content.user_reviews_overall);
 
-    if (reviewTrend === 'Very Positive' || reviewTrend === 'Mostly Postive' || reviewTrend === 'Positive') {
+    if (reviewTrend === 'Very Positive' || reviewTrend === 'Mostly Positive' || reviewTrend === 'Positive') {
       reviewsRatingStyle.color = '#67c1f5';
     } else {
       reviewsRatingStyle.color = '#B9A074';

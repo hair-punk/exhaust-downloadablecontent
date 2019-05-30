@@ -14,8 +14,8 @@ class App extends React.Component {
 
   componentDidMount() {
     var id = Math.floor(Math.random() * 100);
-    id = 2;
-    // TODO using id=2 for now
+    // id = 2;
+    // TODO using randomly generated id for now, later pull from props
     $.get(`http://localhost:3003/games/${id}`, (data) => {
       this.setState({
         franchiseBool: data.franchise,
@@ -36,14 +36,14 @@ class App extends React.Component {
   // onMouseEnter={} onMouseLeave={}
 
   render() {
-    let data = [];
-    for (let key of Object.keys(this.state)) {
-      data.push(<div>`{key}: {JSON.stringify(this.state[key])}`</div>);
-    }
-    const tempDataStyle = {
-      display: 'flex',
-      flexDirection: 'column'
-    }
+    // let data = [];
+    // for (let key of Object.keys(this.state)) {
+    //   data.push(<div>`{key}: {JSON.stringify(this.state[key])}`</div>);
+    // }
+    // const tempDataStyle = {
+    //   display: 'flex',
+    //   flexDirection: 'column'
+    // }
 
     const gridContainer = {
       display: 'grid',
@@ -185,7 +185,7 @@ class App extends React.Component {
           < GameAddOns dlcs={this.state.dlcData}/>
           }
           {/* Data */}
-          <div style={tempDataStyle}>{data}</div>
+          {/* <div style={tempDataStyle}>{data}</div> */}
         </div>
         <div style={col2}></div>
       </div>
