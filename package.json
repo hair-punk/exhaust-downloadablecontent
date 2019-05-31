@@ -7,9 +7,10 @@
     "node": ">=8.11.3"
   },
   "scripts": {
-    "start": "nodemon ./server/index.js",
-    "react-dev": "webpack -d --watch",
+    "start": "node ./server/index.js",
     "seed-db": "node ./database/data/seedDB.js",
+    "start:dev": "nodemon ./server/index.js",
+    "react-dev": "webpack -d --watch",
     "test:jest": "jest",
     "test:jest-watch": "jest --watch ./*.test.js",
     "test:jest-coverage": "jest --coverage --colors",

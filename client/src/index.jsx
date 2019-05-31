@@ -13,9 +13,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    var id = Math.floor(Math.random() * 100);
-    // id = 2;
-    // TODO using randomly generated id for now, later pull from props
+    // If props.gameID not given, randomly generates a game id between 1-100
+    var id;
+    this.props.gameid !== '' ? id = this.props.gameid : id = Math.floor(Math.random() * 100);
     $.get(`http://localhost:3003/games/${id}`, (data) => {
       this.setState({
         franchiseBool: data.franchise,
@@ -193,7 +193,7 @@ class App extends React.Component {
   }
 };
 
-ReactDOM.render(< App />, document.getElementById('app') || document.createElement('div')); // createElement for testing purposes
+ReactDOM.render(< App gameid={''}/>, document.getElementById('app') || document.createElement('div')); // createElement for testing purposes
 
 export default App;
 
