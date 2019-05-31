@@ -11,10 +11,10 @@ const getSalePrice = (priceString, percentString) => {
 };
 
 // Takes a string of space separated words and returns a string in pascal case
-const toPascalCase = (camelCaseStr) => {
+const toPascalCase = (str) => {
   let pascalCaseStr = '';
 
-  pascalCaseArr = camelCaseStr.slice().split(' ');
+  let pascalCaseArr = str.slice().split(' ');
   for (let i = 0; i < pascalCaseArr.length; i++) {
     pascalCaseArr[i] = pascalCaseArr[i][0].toUpperCase() + pascalCaseArr[i].slice(1);
   }

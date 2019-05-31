@@ -204,3 +204,5 @@ export default App;
 // TODO cart button react on hover
 // TODO countdown if bool = true
 // TODO sale module if bool = true
+
+// TODO include propTypes https://reactjs.org/docs/typechecking-with-proptypes.html
