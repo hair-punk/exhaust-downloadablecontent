@@ -20,7 +20,7 @@
 > launch MongoDB server
   - app will create a db /purchaseoptionsservice
   > npm run seed-db
-> update index.jsx (line 196: where <App/> is rendered) to receive a gameid (Number between 1-100) instead of empty string
+- update index.jsx (line 196: where <App/> is rendered) to receive a gameid (Number between 1-100) instead of empty string
 
 ## Requirements
 - Node 8.11.3
@@ -34,6 +34,6 @@ Testing
 
 ### Installing Dependencies
 From within the root directory:
-npm install
+> npm install
 
 
