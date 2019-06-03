@@ -16,7 +16,9 @@ const toPascalCase = (str) => {
 
   let pascalCaseArr = str.slice().split(' ');
   for (let i = 0; i < pascalCaseArr.length; i++) {
-    pascalCaseArr[i] = pascalCaseArr[i][0].toUpperCase() + pascalCaseArr[i].slice(1);
+    if (pascalCaseArr[i][0] !== undefined) {
+      pascalCaseArr[i] = pascalCaseArr[i][0].toUpperCase() + pascalCaseArr[i].slice(1);
+    }
   }
 
   return pascalCaseStr = pascalCaseArr.join(' ');

@@ -49,19 +49,19 @@ class App extends React.Component {
     //   flexDirection: 'column'
     // }
 
-    const gridContainer = {
-      display: 'grid',
-      gridTemplateColumns: '65% auto'
-    };
+    // const gridContainer = {
+    //   display: 'grid',
+    //   gridTemplateColumns: '65% auto'
+    // };
 
-    const col1 = {
-      gridColumnStart: '1',
-      gridColumnEnd: '2',
-    };
+    // const col1 = {
+    //   gridColumnStart: '1',
+    //   gridColumnEnd: '2',
+    // };
 
-    const col2 = {
-      gridColumnStart: '2'
-    };
+    // const col2 = {
+    //   gridColumnStart: '2'
+    // };
 
     const franchiseBannerStyle = {
       display: 'block',
@@ -160,8 +160,9 @@ class App extends React.Component {
     };
 
     return (
-      <div style={gridContainer}>
-        <div style={col1}>
+      <div>
+      {/* <div style={gridContainer}> */}
+      {/*   <div style={col1}> */}
           {/* Franchise Banner - rendered if this.state bool is true*/}
           { this.state.franchiseBool &&
           <div style={franchiseBannerStyle}>
@@ -190,14 +191,15 @@ class App extends React.Component {
           }
           {/* Data */}
           {/* <div style={tempDataStyle}>{data}</div> */}
-        </div>
-        <div style={col2}></div>
+        {/* </div> */}
+        {/* <div style={col2}></div> */}
+      {/* </div> */}
       </div>
     )
   }
 };
 
-ReactDOM.render(< App gameid={''}/>, document.getElementById('app') || document.createElement('div')); // createElement for testing purposes
+ReactDOM.render(< App gameid={''}/>, document.getElementById('purchase') || document.createElement('div')); // createElement for testing purposes
 
 export default App;
 
