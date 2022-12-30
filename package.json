@@ -40,7 +40,7 @@
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "faker": "^4.1.0",
     "jest": "^24.8.0",
-    "mocha": "^6.1.4",
+    "mocha": "^10.2.0",
     "mongodb": "^3.2.6",
     "nodemon": "^1.19.0",
     "request": "^2.88.0",
