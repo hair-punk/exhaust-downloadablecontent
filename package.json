@@ -32,7 +32,7 @@
     "@shelf/jest-mongodb": "^1.0.1",
     "aws-sdk": "^2.463.0",
     "babel-jest": "^24.8.0",
-    "babel-loader": "^8.0.6",
+    "babel-loader": "^8.3.0",
     "chai": "^4.2.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.1",
@@ -44,8 +44,8 @@
     "mongodb": "^3.2.6",
     "nodemon": "^1.19.0",
     "request": "^2.88.0",
-    "webpack": "^4.32.2",
-    "webpack-cli": "^3.3.2"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "version": "1.0.0",
   "main": "index.js",
